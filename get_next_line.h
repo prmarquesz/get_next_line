@@ -6,14 +6,13 @@
 /*   By: proberto <proberto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 12:05:11 by proberto          #+#    #+#             */
-/*   Updated: 2021/06/19 17:11:53 by proberto         ###   ########.fr       */
+/*   Updated: 2021/06/24 03:05:16 by proberto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
