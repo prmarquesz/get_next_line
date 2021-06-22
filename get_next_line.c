@@ -6,7 +6,7 @@
 /*   By: proberto <proberto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 13:12:06 by proberto          #+#    #+#             */
-/*   Updated: 2021/06/19 03:59:18 by proberto         ###   ########.fr       */
+/*   Updated: 2021/06/24 00:53:41 by proberto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_next_line(int fd, char **line)
 	char		*buffer;
 	ssize_t		res;
 
-	if (!*line)
+	if (fd < 0 || BUFFER_SIZE <= 0 || line == 0)
 		return (-1);
 	res = ft_is_there_a_line_break(storage);
 	if (res >= 0)
@@ -41,7 +41,7 @@ int	get_next_line(int fd, char **line)
 		return (-1);
 	}
 	res = ft_get_buffer(fd, line, &buffer, &storage);
-	if (res <= 0)
+	if (res < 0)
 		*line = NULL;
 	free(buffer);
 	return (res);
@@ -100,8 +100,6 @@ ssize_t	ft_get_line(char **line, char **buffer, char **storage)
 
 	len_buffer = ft_strlen(*buffer);
 	len_sotrage = ft_strlen(*storage);
-	if (!len_buffer && !len_sotrage)
-		return (0);
 	*line = (char *)ft_calloc((len_buffer + len_sotrage + 1), sizeof(char));
 	if (!*line)
 		return (-1);
@@ -114,7 +112,7 @@ ssize_t	ft_get_line(char **line, char **buffer, char **storage)
 	}
 	else
 		ft_memcpy(*line, *buffer, len_buffer);
-	return (1);
+	return (0);
 }
 
 ssize_t	ft_get_line_break(ssize_t i, char **line, char **buffer, char **storage)
